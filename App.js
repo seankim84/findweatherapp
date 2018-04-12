@@ -30,13 +30,16 @@ export default class App extends Component {
       `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${API_KEY}`
     )
       .then(response => response.json())
+      
       .then(json => {
+        console.log(json)
         this.setState({
           temperature: json.main.temp,
           name: json.weather[0].main,
           isLoaded: true
         });
       });
+      
   };
 
   render() {
@@ -47,7 +50,7 @@ export default class App extends Component {
         {isLoaded ? (
           <Weather
             weatherName={name}
-            temp={Math.ceil(temperature - 255.15)}
+            temp={Math.ceil(temperature - 275.15)}
             º
           />
         ) : (
